@@ -2,8 +2,11 @@
 import random
 
 # defining the class attributes
-class Product():
-    def __init__(self, name, price=10, weight=20, flammability=0.5, identifier=random.randint(1000000, 9999999)):
+class Product:
+    """
+    Product class - defines the attributes of an acme product.
+    """
+    def __init__(self, name, identifier=random.randint(1000000, 9999999), price=10, weight=20, flammability=0.5):
         self.name = name
         self.price = price
         self.weight = weight
@@ -12,6 +15,7 @@ class Product():
    
 
     def stealability(self):
+        """Stealability function and outputs."""
         stealable = (self.price/self.weight)
         if stealable < 0.5:
             print("Not so stealable...")
@@ -22,7 +26,8 @@ class Product():
    
 
     def explode(self):
-        explosion = (self.flammability*self.weight)
+        """Explosion function and output"""
+        explosion = self.flammability*self.weight
         if explosion < 10:
             print("...fizzle.")
         elif explosion >= 10 or explosion < 50:
@@ -32,6 +37,9 @@ class Product():
 
 
 class BoxingGlove(Product):
+    """
+    An example of a Boxing Glove as a product, inheriting the Product class.
+    """
     def __init__(self, name, price=10, weight=20, flammability=0.5, identifier=random.randint(1000000, 9999999)):
         super().__init__(name, weight=10)
 
